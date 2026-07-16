@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Piyush Dave — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0f1420;
+    --bg-alt: #161c2c;
+    --row-alt: #131826;
+    --border: #262f45;
+    --text: #e7ebf5;
+    --text-dim: #8b93ab;
+    --teal: #34e2c4;
+    --amber: #ffb454;
+    --font-mono: 'IBM Plex Mono', monospace;
+    --font-sans: 'Inter', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-sans);
+    line-height:1.6;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px;}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(15,20,32,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px;}
+  .logo{font-family:var(--font-mono);font-weight:600;color:var(--teal);font-size:15px;}
+  .navlinks{display:flex;gap:28px;font-family:var(--font-mono);font-size:13px;color:var(--text-dim);}
+  .navlinks a:hover{color:var(--teal);}
+  @media(max-width:640px){.navlinks{display:none;}}
+
+  /* HERO */
+  header.hero{padding:90px 0 60px;border-bottom:1px solid var(--border);}
+  .eyebrow{
+    font-family:var(--font-mono);font-size:13px;color:var(--text-dim);
+    display:flex;gap:8px;align-items:center;margin-bottom:18px;
+  }
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);display:inline-block;}
+  .query{
+    font-family:var(--font-mono);
+    font-size:clamp(20px,3.2vw,30px);
+    line-height:1.5;
+    color:var(--text-dim);
+  }
+  .query .kw{color:var(--amber);}
+  .query .str{color:var(--teal);}
+  .hero h1{
+    font-family:var(--font-mono);
+    font-size:clamp(34px,6vw,56px);
+    font-weight:700;
+    margin:14px 0 16px;
+    color:var(--text);
+  }
+  .hero p.role{font-size:18px;color:var(--text-dim);max-width:600px;margin-bottom:28px;}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    font-family:var(--font-mono);font-size:13px;font-weight:600;
+    padding:12px 22px;border-radius:6px;border:1px solid var(--border);
+    transition:all .2s ease;
+  }
+  .btn-primary{background:var(--teal);color:#08110e;border-color:var(--teal);}
+  .btn-primary:hover{background:#5cf0d5;}
+  .btn-ghost:hover{border-color:var(--teal);color:var(--teal);}
+
+  /* SECTION LABEL */
+  .section{padding:64px 0;border-bottom:1px solid var(--border);}
+  .section-label{
+    font-family:var(--font-mono);font-size:13px;color:var(--amber);
+    letter-spacing:.06em;margin-bottom:8px;
+  }
+  .section h2{font-size:26px;font-weight:600;margin-bottom:30px;}
+
+  /* ABOUT */
+  .about-text{max-width:680px;color:var(--text-dim);font-size:16px;}
+  .skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
+  .skill{
+    font-family:var(--font-mono);font-size:13px;
+    background:var(--bg-alt);border:1px solid var(--border);
+    padding:7px 14px;border-radius:5px;color:var(--text);
+  }
+
+  /* PROJECTS TABLE */
+  .table-head{
+    display:grid;grid-template-columns:46px 1fr 140px;
+    font-family:var(--font-mono);font-size:12px;color:var(--text-dim);
+    border-bottom:1px solid var(--border);padding:10px 16px;
+  }
+  .row{
+    display:grid;grid-template-columns:46px 1fr 140px;
+    align-items:center;padding:18px 16px;
+    border-bottom:1px solid var(--border);
+    transition:background .15s ease;
+  }
+  .row:nth-child(even){background:var(--row-alt);}
+  .row:hover{background:var(--bg-alt);}
+  .row-num{font-family:var(--font-mono);color:var(--teal);font-size:13px;}
+  .row-main .title{font-weight:600;font-size:15px;margin-bottom:4px;}
+  .row-main .desc{color:var(--text-dim);font-size:13.5px;}
+  .row-link{
+    font-family:var(--font-mono);font-size:12px;color:var(--teal);
+    justify-self:end;border:1px solid var(--border);padding:6px 12px;
+    border-radius:5px;white-space:nowrap;
+  }
+  .row-link:hover{border-color:var(--teal);}
+  .result-footer{
+    font-family:var(--font-mono);font-size:13px;color:var(--text-dim);
+    padding:14px 16px;
+  }
+  .result-footer span{color:var(--teal);}
+
+  /* CONTACT */
+  .contact-grid{display:flex;flex-wrap:wrap;gap:14px;}
+  .contact-card{
+    font-family:var(--font-mono);font-size:14px;
+    border:1px solid var(--border);padding:16px 20px;border-radius:8px;
+    flex:1;min-width:220px;
+  }
+  .contact-card .k{color:var(--text-dim);font-size:12px;display:block;margin-bottom:6px;}
+  .contact-card .v:hover{color:var(--teal);}
+
+  footer{padding:30px 0;text-align:center;font-family:var(--font-mono);font-size:12px;color:var(--text-dim);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">piyush.dave</div>
+    <div class="navlinks">
+      <a href="#about">about</a>
+      <a href="#projects">projects</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span> AVAILABLE FOR DATA ANALYST ROLES</div>
+    <div class="query"><span class="kw">SELECT</span> * <span class="kw">FROM</span> analysts <span class="kw">WHERE</span> name = <span class="str">'Piyush Dave'</span>;</div>
+    <h1>Piyush Dave</h1>
+    <p class="role">Data Analyst turning raw rows into decisions — SQL, Python, Power BI &amp; Tableau. 13 end-to-end projects, from query to dashboard.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="Piyush_Dave_Data_Analyst_Resume.pdf" download>↓ Download Resume</a>
+      <a class="btn btn-ghost" href="https://github.com/PiyushDave30" target="_blank">GitHub ↗</a>
+      <a class="btn btn-ghost" href="https://public.tableau.com/app/profile/piyushdave" target="_blank">Tableau Public ↗</a>
+      <a class="btn btn-ghost" href="https://linkedin.com/in/piyush-dave-0980a03a8" target="_blank">LinkedIn ↗</a>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-label">-- about</div>
+    <h2>Who's running the query</h2>
+    <p class="about-text">
+      Entry-level Data Analyst from Amravati, Maharashtra. Completed a 9-month virtual internship
+      at AI Variant through ExcelR's Data Analyst Program, and a BE in Electronics &amp; Telecommunication
+      Engineering (2025). Comfortable across the analytics stack — writing SQL from scratch, cleaning
+      data in Python/Pandas, and building dashboards that people actually use.
+    </p>
+    <div class="skills">
+      <span class="skill">SQL</span>
+      <span class="skill">Python (Pandas)</span>
+      <span class="skill">Power BI</span>
+      <span class="skill">Tableau</span>
+      <span class="skill">Excel</span>
+      <span class="skill">DAX</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <div class="wrap">
+    <div class="section-label">-- projects</div>
+    <h2>Result set</h2>
+
+    <div class="table-head">
+      <span>#</span><span>project</span><span style="text-align:right;">link</span>
+    </div>
+
+    <div class="row"><span class="row-num">01</span><div class="row-main"><div class="title">Adventure Works</div><div class="desc">Sales &amp; customer analytics dashboard</div></div><a class="row-link" href="https://github.com/PiyushDave30" target="_blank">view →</a></div>
+    <div class="row"><span class="row-num">02</span><div class="row-main"><div class="title">BMW Sales Analytics</div><div class="desc">Tableau dashboard with custom calculated fields</div></div><a class="row-link" href="https://public.tableau.com/app/profile/piyushdave" target="_blank">view →</a></div>
+    <div class="row"><span class="row-num">03</span><div class="row-main"><div class="title">Nike Sales Analytics</div><div class="desc">60K-row Power BI build, 2021–2024 trend analysis</div></div><a class="row-link" href="https://github.com/PiyushDave30" target="_blank">view →</a></div>
+    <div class="row"><span class="row-num">04</span><div class="row-main"><div class="title">HR Attrition</div><div class="desc">Employee attrition drivers &amp; retention insights</div></div><a class="row-link" href="https://github.com/PiyushDave30" target="_blank">view →</a></div>
+    <div class="row"><span class="row-num">05</span><div class="row-main"><div class="title">Blinkit</div><div class="desc">Quick-commerce sales &amp; delivery performance</div></div><a class="row-link" href="https://github.com/PiyushDave30" target="_blank">view →</a></div>
+    <div class="row"><span class="row-num">06</span><div class="row-main"><div class="title">Zomato</div><div class="desc">Restaurant &amp; order data analysis</div></div><a class="row-link" href="https://github.com/PiyushDave30" target="_blank">view →</a></div>
+    <div class="row"><span class="row-num">07</span><div class="row-main"><div class="title">Swiggy</div><div class="desc">Food delivery trends dashboard</div></div><a class="row-link" href="https://github.com/PiyushDave30" target="_blank">view →</a></div>
+    <div class="row"><span class="row-num">08</span><div class="row-main"><div class="title">Bank Loan</div><div class="desc">Loan approval &amp; risk analysis</div></div><a class="row-link" href="https://github.com/PiyushDave30" target="_blank">view →</a></div>
+    <div class="row"><span class="row-num">09</span><div class="row-main"><div class="title">IPL Analytics</div><div class="desc">Match &amp; player performance dashboard</div></div><a class="row-link" href="https://github.com/PiyushDave30" target="_blank">view →</a></div>
+    <div class="row"><span class="row-num">10</span><div class="row-main"><div class="title">Hospitality</div><div class="desc">Hotel booking &amp; revenue analysis</div></div><a class="row-link" href="https://github.com/PiyushDave30" target="_blank">view →</a></div>
+    <div class="row"><span class="row-num">11</span><div class="row-main"><div class="title">Amravati AQI 2024</div><div class="desc">Local air quality trend analysis</div></div><a class="row-link" href="https://github.com/PiyushDave30" target="_blank">view →</a></div>
+    <div class="row"><span class="row-num">12</span><div class="row-main"><div class="title">Brew Metric Coffee Shop</div><div class="desc">Coffee shop sales &amp; customer analytics</div></div><a class="row-link" href="https://github.com/PiyushDave30" target="_blank">view →</a></div>
+    <div class="row"><span class="row-num">13</span><div class="row-main"><div class="title">India Sales / Practice Dashboards</div><div class="desc">Regional sales practice dashboards</div></div><a class="row-link" href="https://github.com/PiyushDave30" target="_blank">view →</a></div>
+
+    <div class="result-footer"><span>13 rows</span> returned — full queries on GitHub</div>
+  </div>
+</section>
+
+<section class="section" id="contact" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="section-label">-- contact</div>
+    <h2>Get in touch</h2>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:youremail@example.com"><span class="k">email</span><span class="v">youremail@example.com</span></a>
+      <a class="contact-card" href="https://linkedin.com/in/piyush-dave-0980a03a8" target="_blank"><span class="k">linkedin</span><span class="v">piyush-dave</span></a>
+      <a class="contact-card" href="https://github.com/PiyushDave30" target="_blank"><span class="k">github</span><span class="v">PiyushDave30</span></a>
+      <a class="contact-card" href="https://public.tableau.com/app/profile/piyushdave" target="_blank"><span class="k">tableau</span><span class="v">piyushdave</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Piyush Dave — built with plain HTML/CSS, hosted on GitHub Pages</footer>
+
+</body>
+</html>
